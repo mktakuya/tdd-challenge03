@@ -6,16 +6,16 @@ class EmailValidator
 
   def valid?(addr)
     res = addr.match(/\A(.*)@(.*)\z/)
-    !res.nil? && 
+    !res.nil? &&
     has_valid_domain?(res[2]) &&
     has_valid_local?(res[1])
   end
 
-  def has_valid_domain?(addr)
+  def has_valid_domain?(str)
     true
   end
 
-  def has_valid_local?(addr)
+  def has_valid_local?(str)
     true
   end
 end
