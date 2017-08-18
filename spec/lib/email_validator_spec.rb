@@ -9,7 +9,6 @@ describe EmailValidator do
     it "EmailValidatorのインスタンスを返すこと" do
       is_expected.to be_kind_of EmailValidator
     end
-
   end
 
   describe "#valid?" do
