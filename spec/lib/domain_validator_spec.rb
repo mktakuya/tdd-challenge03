@@ -12,31 +12,50 @@ describe DomainValidator do
   end
 
   describe '#valid?' do
-    subeject { validator.valid?(addr) }
-    let(:validator) { DomainValidator }
+    subject { validator.valid?(str) }
+    let(:validator) { DomainValidator.new }
 
-    context 'ドメイン部が example.com のとき' do
 
+    context 'example.com のとき' do
+      let(:str) { "example.com" }
+
+      it { is_expected.to be true }
     end
 
-    context 'ドメイン部が sub.example.com のとき' do
+    context 'sub.example.com のとき' do
+      let(:str) { "sub.example.com" }
 
+      it { is_expected.to be true }
     end
 
-    context 'ドメイン部が example のとき' do
+    context 'example のとき' do
+      let(:str) { "example" }
 
+      it { is_expected.to be true }
     end
 
-    context 'ドメイン部が .aaa のとき' do
+    context '.aaa のとき' do
+      let(:str) { ".aaa" }
 
+      it { is_expected.to be false }
     end
 
-    context 'ドメイン部が aaa. のとき' do
+    context 'aaa. のとき' do
+      let(:str) { "aaa." }
 
+      it { is_expected.to be false }
     end
 
-    context 'ドメイン部が ' do
+    context 'exmaple..com のとき ' do
+      let(:str) { "example..com" }
 
+      it { is_expected.to be false }
+    end
+
+    context '空文字列のとき' do
+      let(:str) { "" }
+
+      it { is_expected.to be false }
     end
   end
 end
