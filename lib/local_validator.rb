@@ -1,0 +1,3 @@
+class LocalValidator
+
+end
