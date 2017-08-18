@@ -1,0 +1,3 @@
+class QuotedValidator
+
+end
