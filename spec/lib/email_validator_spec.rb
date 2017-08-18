@@ -40,13 +40,15 @@ describe EmailValidator do
       let(:addr) { "kuntaro1480@.gmail.com" }
       before do
         allow(validator).to receive(:has_valid_domain?).and_return(false)
+        allow(validator).to receive(:has_valid_local?).and_return(true)
       end
 
       it { is_expected.to be false }
     end
 
-    context "ローカル部としても正しくないとき" do
+    context "ローカル部が正しくないとき" do
       before do
+        allow(validator).to receive(:has_valid_domain?).and_return(true)
         allow(validator).to receive(:has_valid_local?).and_return(false)
       end
       let(:addr) { ".kuntaro1480@gmail.com" }

@@ -12,10 +12,10 @@ class EmailValidator
   end
 
   def has_valid_domain?(str)
-    true
+    @domain_validator.valid?(str)
   end
 
   def has_valid_local?(str)
-    true
+    @local_validator.valid?(str)
   end
 end
